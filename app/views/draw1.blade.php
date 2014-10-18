@@ -19,8 +19,9 @@ canvas {
     display: block;
 }
 </style>
-<canvas id="drawing-canvas" width="800" height="800"></canvas>
 <div id="colorholder"></div>
+
+<canvas id="drawing-canvas" width="800" height="800"></canvas>
 <script>
   $(document).ready(function () {
     //Set up some globals
@@ -40,14 +41,14 @@ canvas {
     //Setup each color palette & add it to the screen
     var colors = ["fff","000","f00","0f0","00f","88f","f8d","f88","f05","f80","0f8","cf0","08f","408","ff8","8ff"];
     for (c in colors) {
-      var item = $('<div/>').css("background-color", '#' + colors[c]).addClass("colorbox");
+      var item = $('<div style="height: 5px">').css("background-color", '#' + colors[c]).addClass("colorbox");
       item.click((function () {
         var col = colors[c];
         return function () {
           currentColor = col;
         };
       })());
-      item.appendTo('#colorholder');
+      $('#colorholder').append(item);
     }
 
     //Keep track of if the mouse is up or down

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', array('as' => 'home', function() {
-    return View::make('home');
-}));
+Route::any('/', array( 'as' => 'home', 'uses' => 'HomeController@home' ));
 Route::get('/test','HomeController@test');
 Route::get('/map','HomeController@map');
 

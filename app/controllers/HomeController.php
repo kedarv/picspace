@@ -14,6 +14,23 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+    public function home() {
+        $data = Array();
+        $points = Array();
+
+        for($x=1; $x< 4; $x++)
+        {
+            $arr = array("lon" => 10*$x,
+                "lat" => 10*$x,
+            "name" => 'name thing'.$x,
+                "link" => 'http://google.com',
+            "id" => 'id_'.$x);
+            $points['drawings'][] = $arr;
+        }
+
+        $data['json']=json_encode($points);
+        return View::make('home', compact('data'));       
+    }
 
 	public function test()
 	{

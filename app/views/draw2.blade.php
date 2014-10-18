@@ -20,13 +20,13 @@
 <script>
     var sketchpad = $('#sketch').sketchpad({
         aspectRatio: 1,
-        backgroundColor: '#fff'
+        backgroundColor: 'transparent'
     });
     sketchpad.setLineSize(3);
 
     var viewer = $('#sketch-viewer').sketchpad({
         aspectRatio: 1,
-        backgroundColor: transparent,
+        backgroundColor: 'transparent',
         locked: true
     });
 

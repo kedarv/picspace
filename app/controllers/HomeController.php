@@ -59,4 +59,7 @@ class HomeController extends BaseController {
     {
         return View::make('raphael');
     }
+    public function locationPost() {
+        
+    }
 }

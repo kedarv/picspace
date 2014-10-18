@@ -13,12 +13,21 @@
     {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'); }}
     @show
 
-          {{ HTML::script('js/geolocator.min.js'); }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'); }}
+    {{ HTML::script('js/geolocator.min.js'); }}
+
     @section('js')
     @show
 <script type="text/javascript">
     //The callback function executed when the location is fetched successfully.
     function onGeoSuccess(location) {
+        $.ajax({
+            type: "POST",
+            url: "{{action('HomeController@locationPost')}}",
+            data: location,
+            success: success,
+            dataType: dataType
+        });
         console.log(location);
     }
     //The callback function executed when the location could not be fetched.

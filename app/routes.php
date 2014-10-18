@@ -21,6 +21,7 @@ Route::get('/raphael', 'HomeController@raphael');
 Route::get('/draw1/{drawing_id?}','HomeController@draw1');
 Route::get('/draw2', 'HomeController@draw2');
 
+Route::post('/locationPost', 'HomeController@locationPost');
 //
 
 // Confide routes

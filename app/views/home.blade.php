@@ -16,11 +16,11 @@ background: #cecece;
 }
 </style>
 <script>
-var myFirebaseRef = new Firebase("https://picspace.firebaseio.com");
+var myFirebaseRef = new Firebase("https://picspace.firebaseio.com/session1");
 </script>
 <div id="editor"></div>
-<textarea rows="5" cols="20" id="data"></textarea>
 <script type="text/javascript">
+$(document).ready(function() {
 	var sketchpad = Raphael.sketchpad("editor", {
 		width: 400,
 		height: 400,
@@ -30,12 +30,12 @@ var myFirebaseRef = new Firebase("https://picspace.firebaseio.com");
 	// When the sketchpad changes, update the input field.
 	sketchpad.change(function() {
 		var data_json = sketchpad.json();
-		myFirebaseRef.set({
+		myFirebaseRef.push({
   			data: data_json,
   		});
-		$("#data").val(data_json);
 		console.log(data_json);
 	});
+});
 </script>
 <div id="viewer"></div>
 

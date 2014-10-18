@@ -57,13 +57,13 @@
 
     function copyJSON() {
         var json = sketchpad.json();
-        //viewer.jsonLoad(json)
+        viewer.jsonLoad(json)
     }
 
     // --------- Visual effects ---------------
 
     $('#copy').click(function() {
-        console.log(sketchpad.copyJSON());
+        console.log(copyJSON());
     });
 
     $('.resize').resizable({

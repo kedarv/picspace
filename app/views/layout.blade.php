@@ -18,30 +18,40 @@
 
     @section('js')
     @show
-<script type="text/javascript">
-    //The callback function executed when the location is fetched successfully.
-    function onGeoSuccess(location) {
-        $.ajax({
-            type: "POST",
-            url: "{{action('HomeController@locationPost')}}",
-            data: location,
-			success:function (data) {
-				console.log(data);
-			},
-            dataType: 'json',
-        });
-        console.log(location);
-    }
-    //The callback function executed when the location could not be fetched.
-    function onGeoError(message) {
-        console.log(message);
-    }
+<script>
 
-    window.onload = function() {
-        //geolocator.locateByIP(onGeoSuccess, onGeoError, 2, 'map-canvas');
-        var html5Options = { enableHighAccuracy: true, timeout: 3000, maximumAge: 0 };
-        geolocator.locate(onGeoSuccess, onGeoError, true, html5Options, null);
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+    console.log("failed");
     }
+}
+
+function showPosition(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    var location = {};
+    location['lat']=position.coords.latitude;
+    location['lon']=position.coords.longitude;
+
+
+    $.ajax({
+                type: "POST",
+                url: "{{action('HomeController@locationPost')}}",
+                data: location,
+    			success:function (data) {
+    				console.log(data);
+    			},
+                dataType: 'json'
+            });
+
+
+
+}
+$(document).ready(function(){
+getLocation();
+});
 </script>
     @section('append_header')@show    
 </head>

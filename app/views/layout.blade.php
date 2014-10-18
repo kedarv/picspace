@@ -25,8 +25,10 @@
             type: "POST",
             url: "{{action('HomeController@locationPost')}}",
             data: location,
-            success: success,
-            dataType: dataType
+			success:function (data) {
+				console.log(data);
+			},
+            dataType: 'json',
         });
         console.log(location);
     }

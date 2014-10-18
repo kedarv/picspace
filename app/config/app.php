@@ -121,7 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Zizaco\Confide\ServiceProvider',
+        'J42\LaravelFirebase\LaravelFirebaseServiceProvider',
 
 	),
 
@@ -189,8 +189,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Confide'    => 'Zizaco\Confide\Facade',
+        'Firebase'        => 'J42\LaravelFirebase\LaravelFirebaseFacade',
 
-	),
+    ),
 
 );

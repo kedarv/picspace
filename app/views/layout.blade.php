@@ -13,13 +13,47 @@
     {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'); }}
     @show
 
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'); }}
+    {{ HTML::script('js/geolocator.min.js'); }}
+
     @section('js')
     @show
+<script>
 
-    @section('append_header')@show
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+    console.log("failed");
+    }
+}
+
+function showPosition(position) {
+    // console.log(position.coords.latitude);
+    // console.log(position.coords.longitude);
+    var location = {};
+    location['lat']=position.coords.latitude;
+    location['lon']=position.coords.longitude;
 
 
-    
+    $.ajax({
+                type: "POST",
+                url: "{{action('HomeController@locationPost')}}",
+                data: location,
+    			success:function (data) {
+    				console.log(data);
+    			},
+                dataType: 'json'
+            });
+
+
+
+}
+$(document).ready(function(){
+getLocation();
+});
+</script>
+    @section('append_header')@show    
 </head>
 <body>
 

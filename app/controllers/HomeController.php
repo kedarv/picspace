@@ -14,21 +14,9 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-
-	public function test()
-	{
-		return View::make('test');
-	}
-	public function map()
-	{
-
+    public function home() {
         $data = Array();
         $points = Array();
-        $points['current']['lon'] = 0;
-        $points['current']['lat'] = 0;
-
-
-
 
         for($x=1; $x< 4; $x++)
         {
@@ -41,22 +29,45 @@ class HomeController extends BaseController {
         }
 
         $data['json']=json_encode($points);
-        var_dump($data);
+        return View::make('home', compact('data'));       
+    }
 
+	public function test()
+    {
+		return View::make('test');
+	}
+	public function map()
+	{
+
+        $data = Array();
+        $points = Array();
+
+
+        $drawings = Firebase::get('/draw1/drawings');
+        foreach($drawings as $key => $eachDrawing)
+        {
+            $arr = array(
+                "lon" => $eachDrawing['data']['lon'],
+                "lat" => $eachDrawing['data']['lat'],
+                "name" => $key,
+                "link" => 'http://google.com',
+            "id" => 'id');
+            $points['drawings'][] = $arr;
+        }
+
+        $data['json']=json_encode($points);
 		return View::make('map', compact('data'));
 	}
-    public function draw1($drawing_id = "default")
+    public function draw($drawing_id = "default")
     {
         $data = array();
         $data['drawing_id']=$drawing_id;
-        return View::make('draw1', compact('data'));
+        return View::make('draw', compact('data'));
     }
-    public function draw2()
-    {
-        return View::make('draw2');
-    }
-    public function raphael()
-    {
-        return View::make('raphael');
+    public function locationPost() {
+        if (Request::ajax()) {
+            Session::put('lon', $_POST['lon']);
+            Session::put('lat', $_POST['lat']);
+        }
     }
 }

@@ -82,6 +82,12 @@ return array(
 			'password' => '',
 			'prefix'   => '',
 		),
+        'firebase' => array(
+            'host'      => 'https://picspace.firebaseio.com/',
+            'token'     => 'hxwEo9n2AEzsFng33ZsZW2ccc5qixU2CaoaVilub',
+            'timeout'   => 10,
+            'sync'      => false,           // OPTIONAL: auto-sync all Eloquent models with Firebase?
+        ),
 
 	),
 

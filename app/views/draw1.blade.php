@@ -19,16 +19,18 @@ canvas {
     display: block;
 }
 </style>
+<h1>drawing id #{{$data['drawing_id']}}</h1>
 <div id="colorholder"></div>
 
 <canvas id="drawing-canvas" width="800" height="800"></canvas>
 <script>
+var drawing_id = "{{$data['drawing_id']}}"
   $(document).ready(function () {
     //Set up some globals
     var pixSize = 1, lastPoint = null, currentColor = "000", mouseDown = 0;
 
     //Create a reference to the pixel data for our drawing.
-    var pixelDataRef = new Firebase('https://picspace.firebaseio.com/draw1/');
+    var pixelDataRef = new Firebase('https://picspace.firebaseio.com/draw1/id/'+drawing_id);
 
     // Set up our canvas
     var myCanvas = document.getElementById('drawing-canvas');

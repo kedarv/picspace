@@ -24,11 +24,6 @@ class HomeController extends BaseController {
 
         $data = Array();
         $points = Array();
-        $points['current']['lon'] = 0;
-        $points['current']['lat'] = 0;
-
-
-
 
         for($x=1; $x< 4; $x++)
         {
@@ -41,8 +36,6 @@ class HomeController extends BaseController {
         }
 
         $data['json']=json_encode($points);
-        var_dump($data);
-
 		return View::make('map', compact('data'));
 	}
     public function draw1($drawing_id = "default")
@@ -60,6 +53,9 @@ class HomeController extends BaseController {
         return View::make('raphael');
     }
     public function locationPost() {
-        
+        if (Request::ajax()) {
+            Session::put('lon', $_POST['lon']);
+            Session::put('lat', $_POST['lat']);
+        }
     }
 }

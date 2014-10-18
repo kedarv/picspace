@@ -29,8 +29,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
+    // console.log(position.coords.latitude);
+    // console.log(position.coords.longitude);
     var location = {};
     location['lat']=position.coords.latitude;
     location['lon']=position.coords.longitude;

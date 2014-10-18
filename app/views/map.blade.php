@@ -1,17 +1,15 @@
 @extends('layout')
-  
 
   @section('append_header')
 
-{{$data['json']}}
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
         <script>
          var json = '{{$data['json']}}'
       var locations = JSON.parse(json);
     function initialize() {
-      var myLatlng = new google.maps.LatLng(locations.current.lon,locations.current.lat);
+      var myLatlng = new google.maps.LatLng({{Session::get('lat')}},{{Session::get('lon')}});
       var mapOptions = {
-        zoom: 4,
+        zoom: 14,
         center: myLatlng
       }
      
@@ -43,7 +41,7 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 
         </script>
+        @stop
   @section('content')
     <div id="map-canvas" style="width:500px;height:380px;"></div>
   @stop
-@stop

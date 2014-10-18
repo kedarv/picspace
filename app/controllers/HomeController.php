@@ -44,7 +44,7 @@ class HomeController extends BaseController {
 
 		return View::make('register', compact('data'));
 	}
-    public function draw1($drawing_id)
+    public function draw1($drawing_id = "default")
     {
         $data = array();
         $data['drawing_id']=$drawing_id;

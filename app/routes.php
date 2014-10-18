@@ -18,7 +18,7 @@ Route::get('/test','HomeController@test');
 Route::get('/register','HomeController@register');
 
 Route::get('/raphael', 'HomeController@raphael');
-Route::get('/draw1','HomeController@draw1');
+Route::get('/draw1/{drawing_id?}','HomeController@draw1');
 Route::get('/draw2', 'HomeController@draw2');
 
 //

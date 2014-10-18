@@ -14,6 +14,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{route('home')}}">Raphael</a></li>
                 <li><a href="{{action('HomeController@draw1')}}">Draw1</a></li>
+                 <li><a href="{{action('HomeController@draw2')}}">Draw2</a></li>
+            </ul>
             </ul>
             <ul class="nav navbar-nav navbar-right">
              @if (Auth::guest())

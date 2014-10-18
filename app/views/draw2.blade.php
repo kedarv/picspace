@@ -6,6 +6,7 @@
 {{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')}}
 {{HTML::script('js/responsive-sketchpad.js')}}
 {{HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')}}
+{{HTML::script('//cdn.firebase.com/js/client/1.1.2/firebase.js')}}
 {{HTML::style('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css')}}
 @stop
 
@@ -18,6 +19,9 @@
 </div>
 
 <script>
+var b = setInterval("copyJSON()",1000);
+var old_json;
+var myFirebaseRef = new Firebase("https://picspace.firebaseio.com/draw2/");
     var sketchpad = $('#sketch').sketchpad({
         aspectRatio: 1,
         backgroundColor: 'transparent'
@@ -31,9 +35,21 @@
     });
 
     function copyJSON() {
+
         var json = sketchpad.json();
+        console.log(json==old_json);
+        if(!(json===old_json))
+        {
+        console.log("push!!")
+            myFirebaseRef.push({
+                data: json
+            });
+        }
+                old_json=json;
+
+
         viewer.jsonLoad(json)
-        console.log(json);
+        //console.log(json);
     }
 
     // --------- Visual effects ---------------

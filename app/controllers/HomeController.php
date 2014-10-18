@@ -35,6 +35,7 @@ class HomeController extends BaseController {
             $arr = array("lon" => 10*$x,
                 "lat" => 10*$x,
             "name" => 'name thing'.$x,
+                "link" => 'http://google.com',
             "id" => 'id_'.$x);
             $points['drawings'][] = $arr;
         }

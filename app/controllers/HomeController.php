@@ -19,5 +19,10 @@ class HomeController extends BaseController {
 	{
 		return View::make('test');
 	}
+	public function register()
+	{
+		return View::make('register');
+	}
+
 
 }

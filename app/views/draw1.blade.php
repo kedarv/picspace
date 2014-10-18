@@ -10,10 +10,16 @@
 
 
 @section('content')
-
-<div>
-  <canvas id="drawing-canvas" width="800" height="800"></canvas>
-</div>
+<style>
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+</style>
+<canvas id="drawing-canvas" width="800" height="800"></canvas>
 <div id="colorholder"></div>
 <script>
   $(document).ready(function () {

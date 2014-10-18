@@ -3,9 +3,10 @@
 
   @section('append_header')
 
+{{$data['json']}}
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
         <script>
-         var json = '{"current":{"lon":10,"lat":10},"drawings":[{"lon":20,"lat":20,"name":"thing0","id":"id_0"},{"lon":30,"lat":30,"name":"name thing1","id":"id_1"},{"lon":40,"lat":40,"name":"name thing2","id":"id_2"}]}';
+         var json = '{{$data['json']}}'
       var locations = JSON.parse(json);
     function initialize() {
       var myLatlng = new google.maps.LatLng(locations.current.lon,locations.current.lat);

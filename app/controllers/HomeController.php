@@ -19,7 +19,7 @@ class HomeController extends BaseController {
 	{
 		return View::make('test');
 	}
-	public function register()
+	public function map()
 	{
 
         $data = Array();
@@ -30,10 +30,10 @@ class HomeController extends BaseController {
 
 
 
-        for($x=0; $x< 3; $x++)
+        for($x=1; $x< 4; $x++)
         {
-            $arr = array("lon" => 0,
-                "lat" => 0,
+            $arr = array("lon" => 10*$x,
+                "lat" => 10*$x,
             "name" => 'name thing'.$x,
             "id" => 'id_'.$x);
             $points['drawings'][] = $arr;
@@ -42,7 +42,7 @@ class HomeController extends BaseController {
         $data['json']=json_encode($points);
         var_dump($data);
 
-		return View::make('register', compact('data'));
+		return View::make('map', compact('data'));
 	}
     public function draw1($drawing_id = "default")
     {

@@ -15,7 +15,7 @@ Route::get('/', array('as' => 'home', function() {
     return View::make('home');
 }));
 Route::get('/test','HomeController@test');
-Route::get('/register','HomeController@register');
+Route::get('/map','HomeController@map');
 
 Route::get('/raphael', 'HomeController@raphael');
 Route::get('/draw1/{drawing_id?}','HomeController@draw1');

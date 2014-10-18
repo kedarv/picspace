@@ -11,14 +11,11 @@
 
 @section('content')
 <a href="#" id="copy">Copy</a>
-<div class="resize">
-<canvas id="sketch">Your browser does not support HTML5 Canvas.</canvas>
-</div>
 
-<div class="resize">
-<canvas id="sketch-viewer">Your browser does not support HTML5 Canvas.</canvas>
+<div style="position: relative;">
+<canvas id="sketch-viewer" style="position: absolute; left: 0; top: 0; z-index: 0;">Your browser does not support HTML5 Canvas.</canvas>
+<canvas id="sketch" style="position: absolute; left: 0; top: 0; z-index: 1;">Your browser does not support HTML5 Canvas.</canvas>
 </div>
-
 
 <script>
     var sketchpad = $('#sketch').sketchpad({
@@ -29,7 +26,7 @@
 
     var viewer = $('#sketch-viewer').sketchpad({
         aspectRatio: 1,
-        backgroundColor: '#fff',
+        backgroundColor: transparent,
         locked: true
     });
 

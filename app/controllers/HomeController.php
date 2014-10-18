@@ -33,7 +33,7 @@ class HomeController extends BaseController {
     }
 
 	public function test()
-	{
+    {
 		return View::make('test');
 	}
 	public function map()
@@ -42,13 +42,16 @@ class HomeController extends BaseController {
         $data = Array();
         $points = Array();
 
-        for($x=1; $x< 4; $x++)
+
+        $drawings = Firebase::get('/draw1/drawings');
+        foreach($drawings as $key => $eachDrawing)
         {
-            $arr = array("lon" => 10*$x,
-                "lat" => 10*$x,
-            "name" => 'name thing'.$x,
+            $arr = array(
+                "lon" => $eachDrawing['data']['lon'],
+                "lat" => $eachDrawing['data']['lat'],
+                "name" => $key,
                 "link" => 'http://google.com',
-            "id" => 'id_'.$x);
+            "id" => 'id');
             $points['drawings'][] = $arr;
         }
 

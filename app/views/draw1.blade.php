@@ -30,7 +30,8 @@ var drawing_id = "{{$data['drawing_id']}}"
     var pixSize = 1, lastPoint = null, currentColor = "000", mouseDown = 0;
 
     //Create a reference to the pixel data for our drawing.
-    var pixelDataRef = new Firebase('https://picspace.firebaseio.com/draw1/id/'+drawing_id);
+    var pixelDataRef = new Firebase('https://picspace.firebaseio.com/draw1/drawings/'+drawing_id+'/points/');
+    var otherdata = new Firebase('https://picspace.firebaseio.com/draw1/drawings/'+drawing_id+'/data/');
 
     // Set up our canvas
     var myCanvas = document.getElementById('drawing-canvas');
@@ -105,6 +106,10 @@ var drawing_id = "{{$data['drawing_id']}}"
     pixelDataRef.on('child_added', drawPixel);
     pixelDataRef.on('child_changed', drawPixel);
     pixelDataRef.on('child_removed', clearPixel);
+
+    otherdata.child("lat").set(Math.floor((Math.random() * 100) + 1));
+    otherdata.child("lon").set(Math.floor((Math.random() * 100) + 1));
+
   });
 </script>
 

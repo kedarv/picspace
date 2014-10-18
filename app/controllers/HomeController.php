@@ -23,6 +23,10 @@ class HomeController extends BaseController {
 	{
 		return View::make('register');
 	}
+    public function draw1()
+    {
+        return View::make('draw1');
+    }
 
 
 }

@@ -17,4 +17,5 @@ Route::get('/', array('as' => 'home', function() {
 Route::get('/test','HomeController@test');
 Route::get('/register','HomeController@register');
 
+Route::get('/draw1','HomeController@draw1');
 

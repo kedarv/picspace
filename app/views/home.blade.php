@@ -9,7 +9,13 @@
       var myLatlng = new google.maps.LatLng({{Session::get('lat')}},{{Session::get('lon')}});
       var mapOptions = {
         zoom: 14,
-        center: myLatlng
+        center: myLatlng,
+        disableDefaultUI: true,
+        scrollwheel: false,
+   		navigationControl: false,
+    	mapTypeControl: false,
+    	scaleControl: false,
+    	draggable: false,
       }
      
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -54,8 +60,9 @@
   position:absolute;
 }
 .jumbotron, .navbar {
-  z-index:1;
-  position: relative; 
+  z-index: 1;
+  position: relative;
+  opacity: .8;
 }
 .jumbotron h2 {
 	font-family: 'Rock Salt', cursive;

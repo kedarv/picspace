@@ -31,5 +31,8 @@ class HomeController extends BaseController {
     {
         return View::make('draw2');
     }
-
+    public function raphael()
+    {
+        return View::make('raphael');
+    }
 }

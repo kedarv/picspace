@@ -58,19 +58,11 @@ class HomeController extends BaseController {
         $data['json']=json_encode($points);
 		return View::make('map', compact('data'));
 	}
-    public function draw1($drawing_id = "default")
+    public function draw($drawing_id = "default")
     {
         $data = array();
         $data['drawing_id']=$drawing_id;
-        return View::make('draw1', compact('data'));
-    }
-    public function draw2()
-    {
-        return View::make('draw2');
-    }
-    public function raphael()
-    {
-        return View::make('raphael');
+        return View::make('draw', compact('data'));
     }
     public function locationPost() {
         if (Request::ajax()) {

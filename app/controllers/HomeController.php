@@ -4,9 +4,9 @@ class HomeController extends BaseController {
     // Outputs if user is within allowed range
     public function checkEditable($myLat, $myLng, $getLat, $getLng) {
         $earth_radius = 6371;
-        $dLat = deg2rad($latitude2 - $latitude1);
-        $dLon = deg2rad($longitude2 - $longitude1);
-        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * sin($dLon/2) * sin($dLon/2);
+        $dLat = deg2rad($getLat - $myLat);
+        $dLon = deg2rad($getLng - $myLng);
+        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($myLat)) * cos(deg2rad($getLat)) * sin($dLon/2) * sin($dLon/2);
         $c = 2 * asin(sqrt($a));
         $d = $earth_radius * $c * .62137;
         if($d < 1) {
@@ -79,7 +79,7 @@ class HomeController extends BaseController {
         //$data['drawing_id']=$drawing_id;
         $data=$drawings['data'];
         $data['key']=$drawing_id;
-        $data['editable'] =  $this->checkEditable($_SESSION['lat'], $_SESSION['lon'], $data['lat'], $data['lon']);
+        $data['editable'] =  $this->checkEditable(Session::get('lat'), Session::get('lon'), $data['lat'], $data['lon']);
         return View::make('draw', compact('data'));
     }
     public function locationPost() {

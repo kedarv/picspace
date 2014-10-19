@@ -3,7 +3,9 @@
   @section('append_header')
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
-      var json = '{{$data['json']}}'
+      var json = '{{$data['json']}}';
+      var result = new Array();
+      var name;
          //console.log(json);
       var locations = JSON.parse(json);
       function initialize() {
@@ -27,9 +29,12 @@
         //console.log(locations.drawings[i].lon);
         //console.log(locations.drawings[i].lat);
         //console.log(locations.drawings[i].name);
-        var name = locations.drawings[i].name;
+        //result[i] = 
+        //console.log(result[i]);
+        //console.log(name[i].link(locations.drawings[i].link));
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
+            var name = locations.drawings[i].name;
             infowindow.setContent(name.link(locations.drawings[i].link));
             infowindow.open(map, marker);
           }

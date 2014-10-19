@@ -75,7 +75,7 @@ ColorPicker(
     //Draw a line from the mouse's last position to its current position
     var drawLineOnMouseMove = function(e) {
       if (!mouseDown) return;
-
+      if (!"{{$data['editable']}}") return;
       // Bresenham's line algorithm. We use this to ensure smooth lines are drawn
       var offset = $('canvas').offset();
       var x1 = Math.floor((e.pageX - offset.left) / pixSize - 1),

@@ -24,7 +24,7 @@ class HomeController extends BaseController {
                 "lon" => $eachDrawing['data']['lon'],
                 "lat" => $eachDrawing['data']['lat'],
                 "name" => $eachDrawing['data']['name'],
-                "link" => 'http://something/'.$key,
+                "link" => URL::to('/')."/draw/".$key,
             "id" => $key);
             $points['drawings'][] = $arr;
         }
@@ -49,7 +49,7 @@ class HomeController extends BaseController {
                 "lon" => $eachDrawing['data']['lon'],
                 "lat" => $eachDrawing['data']['lat'],
                 "name" => $eachDrawing['data']['name'],
-                "link" => 'http://something/'.$key,
+                "link" => URL::to('/')."/draw/".$key,
             "id" => $key);
             $points['drawings'][] = $arr;
         }

@@ -13,7 +13,8 @@
         <div class="collapse navbar-collapse" id="nav-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{{action('HomeController@home')}}">Home</a></li>
-                <li><a href="{{action('HomeController@draw')}}">Draw</a></li>
+                <li><a href="{{action('HomeController@new')}}">newDrawing</a></li>
+                <li><a href="{{action('HomeController@map')}}">Map</a></li>
             </ul>
             </ul>
         </div>

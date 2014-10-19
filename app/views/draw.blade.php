@@ -92,10 +92,6 @@ ColorPicker(
       while (true) {
         //write the pixel into Firebase, or if we are drawing white, remove the pixel
         pixelDataRef.child(x0 + ":" + y0).set(currentColor);
-
-        myDate = new Date();
-
-        otherdata.child('date_updated').set(+ myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds()   );
         console.log(currentColor);
 
         if (x0 == x1 && y0 == y1) break;
@@ -131,29 +127,7 @@ ColorPicker(
 
   });
 </script>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="james.walts95@gmail.com">
-<input type="hidden" name="lc" value="US">
-<input type="hidden" name="item_name" value="Premium Account">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="0">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
-<table>
-<tr><td><input type="hidden" name="on0" value="Buy Now!">Buy Now!</td></tr><tr><td><select name="os0">
-  <option value="Premium Account">Premium Account $0.99 USD</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="option_select0" value="Premium Account">
-<input type="hidden" name="option_amount0" value="0.99">
-<input type="hidden" name="option_index" value="0">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-<br>
-<br>
+
 <div class="fb-like" data-href="{{$data['key']}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 <script type="text/javascript">
 

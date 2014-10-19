@@ -26,13 +26,10 @@ canvas {
     display: block;
 }
 </style>
-<h1>drawing id #{{$data['key']}} - {{$data['name']}}</h1>
-
-
-        <div id="color-picker" class="cp-default"></div>
-        <br>
-
-<canvas id="drawing-canvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+<h1>Drawing in <b>{{$data['name']}}</b></h1>
+<hr/>
+<div id="color-picker" class="cp-default"></div>
+<canvas id="drawing-canvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
 <script>
     var drawingid = "{{$data['key']}}"
     console.log(drawingid);

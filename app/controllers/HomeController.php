@@ -92,6 +92,7 @@ class HomeController extends BaseController {
         $data['data']=$arr;
 
 
-        Firebase::push('/draw1/drawings/', $data);
+        $fire = Firebase::push('/draw1/drawings/', $data);
+        return Redirect::action('HomeController@draw',array($fire['name']));
     }
 }

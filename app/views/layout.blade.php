@@ -14,8 +14,6 @@
     @show
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'); }}
-    @section('js')
-    @show
 <script>
 function getLocation() {
 	var options = null;
@@ -56,6 +54,8 @@ $(document).ready(function(){
 	getLocation();
 });
 </script>
+    @section('js')
+    @show
     @section('append_header')@show    
 </head>
 <body>

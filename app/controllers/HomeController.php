@@ -59,8 +59,12 @@ class HomeController extends BaseController {
 	}
     public function draw($drawing_id = "default")
     {
-        $data = array();
-        $data['drawing_id']=$drawing_id;
+        $drawings = Firebase::get('/draw1/drawings/'.$drawing_id);
+        if($drawings==null)
+            die('404');
+        //$data['drawing_id']=$drawing_id;
+        $data=$drawings['data'];
+        $data['key']=$drawing_id;
         return View::make('draw', compact('data'));
     }
     public function locationPost() {

@@ -12,6 +12,14 @@
 
 
 @section('content')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <style type="text/css">
   #picker { width: 200px; height: 200px }
   #slide { width: 30px; height: 200px }
@@ -26,13 +34,10 @@ canvas {
     display: block;
 }
 </style>
-<h1>drawing id #{{$data['key']}} - {{$data['name']}}</h1>
-
-
-        <div id="color-picker" class="cp-default"></div>
-        <br>
-
-<canvas id="drawing-canvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+<h1>Drawing in <b>{{$data['name']}}</b></h1>
+<hr/>
+<div id="color-picker" class="cp-default"></div>
+<canvas id="drawing-canvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
 <script>
     var drawingid = "{{$data['key']}}"
     console.log(drawingid);
@@ -126,10 +131,11 @@ ColorPicker(
 
   });
 </script>
-
+<div class="fb-like" data-href="{{$data['key']}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 <script type="text/javascript">
 
                 </script>
                 <br>
+              
 
 @stop

@@ -96,10 +96,12 @@ class HomeController extends BaseController {
         $data = array();
         $drawings = Firebase::get('/draw1/drawings');
         $data['counter'] = 0;
-        foreach($drawings as $key => $eachDrawing) {
-            $d = $this->getDistance(Session::get('lat'), Session::get('lon'), $eachDrawing['data']['lat'], $eachDrawing['data']['lon']);
-            if($d <= .5) {
-                $data['counter']++;
+        if($drawings!=null) {
+            foreach ($drawings as $key => $eachDrawing) {
+                $d = $this->getDistance(Session::get('lat'), Session::get('lon'), $eachDrawing['data']['lat'], $eachDrawing['data']['lon']);
+                if ($d <= .5) {
+                    $data['counter']++;
+                }
             }
         }
         $data['lon']=Session::get('lon');

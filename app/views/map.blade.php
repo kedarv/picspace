@@ -29,8 +29,6 @@
         //console.log(locations.drawings[i].lon);
         //console.log(locations.drawings[i].lat);
         //console.log(locations.drawings[i].name);
-        //result[i] = 
-        //console.log(result[i]);
         //console.log(name[i].link(locations.drawings[i].link));
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {

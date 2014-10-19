@@ -5,11 +5,18 @@
 @section('js')
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'); }}
 {{HTML::script('//cdn.firebase.com/js/client/1.1.2/firebase.js')}}
+{{HTML::script('js/colorpicker.min.js')}}
+{{HTML::style('css/colorpicker.themes.css')}}
 @stop
 
 
 
 @section('content')
+<style type="text/css">
+  #picker { width: 200px; height: 200px }
+  #slide { width: 30px; height: 200px }
+</style>
+
 <style>
 canvas {
     padding-left: 0;
@@ -20,9 +27,12 @@ canvas {
 }
 </style>
 <h1>drawing id #{{$data['key']}} - {{$data['name']}}</h1>
-<div id="colorholder"></div>
 
-<canvas id="drawing-canvas" width="800" height="800"></canvas>
+
+        <div id="color-picker" class="cp-default"></div>
+        <br>
+
+<canvas id="drawing-canvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
 <script>
     var drawingid = "{{$data['key']}}"
     console.log(drawingid);
@@ -42,18 +52,19 @@ canvas {
       return;
     }
 
-    //Setup each color palette & add it to the screen
-    var colors = ["fff","000","f00","0f0","00f","88f","f8d","f88","f05","f80","0f8","cf0","08f","408","ff8","8ff"];
-    for (c in colors) {
-      var item = $('<div style="height: 5px">').css("background-color", '#' + colors[c]).addClass("colorbox");
-      item.click((function () {
-        var col = colors[c];
-        return function () {
-          currentColor = col;
-        };
-      })());
-      $('#colorholder').append(item);
-    }
+
+
+ColorPicker(
+
+            document.getElementById('color-picker'),
+                    function(hex, hsv, rgb) {
+                      //document.body.style.backgroundColor = hex;
+                      currentColor=hex.substring(1,7);
+                      console.log(currentColor);
+                    });
+
+
+
 
     //Keep track of if the mouse is up or down
     myCanvas.onmousedown = function () {mouseDown = 1;};
@@ -75,7 +86,8 @@ canvas {
       var sx = (x0 < x1) ? 1 : -1, sy = (y0 < y1) ? 1 : -1, err = dx - dy;
       while (true) {
         //write the pixel into Firebase, or if we are drawing white, remove the pixel
-        pixelDataRef.child(x0 + ":" + y0).set(currentColor === "fff" ? null : currentColor);
+        pixelDataRef.child(x0 + ":" + y0).set(currentColor);
+        console.log(currentColor);
 
         if (x0 == x1 && y0 == y1) break;
         var e2 = 2 * err;
@@ -110,5 +122,10 @@ canvas {
 
   });
 </script>
+
+<script type="text/javascript">
+
+                </script>
+                <br>
 
 @stop

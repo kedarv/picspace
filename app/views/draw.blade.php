@@ -9,21 +9,17 @@
 {{HTML::style('css/colorpicker.themes.css')}}
 @stop
 
-
-
 @section('content')
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=309640359218030&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<style type="text/css">
-  #picker { width: 200px; height: 200px }
-  #slide { width: 30px; height: 200px }
-</style>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <style>
 canvas {
@@ -131,34 +127,7 @@ ColorPicker(
 
   });
 </script>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="james.walts95@gmail.com">
-<input type="hidden" name="lc" value="US">
-<input type="hidden" name="item_name" value="Premium Account">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="0">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
-<table>
-<tr><td><input type="hidden" name="on0" value="Buy Now!">Buy Now!</td></tr><tr><td><select name="os0">
-  <option value="Premium Account">Premium Account $0.99 USD</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="option_select0" value="Premium Account">
-<input type="hidden" name="option_amount0" value="0.99">
-<input type="hidden" name="option_index" value="0">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-<br>
-<br>
-<div class="fb-like" data-href="{{$data['key']}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<script type="text/javascript">
-
-                </script>
-                <br>
-              
-
+<hr/>
+<div class="fb-like" data-href="http://picspace.me" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+<hr/>
 @stop

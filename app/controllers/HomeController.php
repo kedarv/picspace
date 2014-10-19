@@ -25,12 +25,12 @@ class HomeController extends BaseController {
                 "lat" => $eachDrawing['data']['lat'],
                 "name" => $eachDrawing['data']['name'],
                 "link" => 'http://something/'.$key,
-                "id" => $key);
+            "id" => $key);
             $points['drawings'][] = $arr;
         }
 
         $data['json']=json_encode($points);
-        return View::make('home', compact('data'));;
+        return View::make('home', compact('data'));
     }
 
 	public function test()

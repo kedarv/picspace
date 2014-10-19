@@ -51,7 +51,7 @@
       }
       	var circle = new google.maps.Circle({
   			map: map,
-  			radius: 804,    // 10 miles in metres
+  			radius: 1609,    // 10 miles in metres
 		strokeColor: '#0033CC',
       strokeOpacity: 0.5,
       strokeWeight: 1,

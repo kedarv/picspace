@@ -14,32 +14,26 @@
     @show
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'); }}
-
     @section('js')
     @show
 <script>
-
-function getLocation() {/* 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-    console.log("failed");
-    } */
+function getLocation() {
 	var options = null;
 	var browserChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
     if (navigator.geolocation) {
-		if (browserChrome) //set this var looking for Chrome un user-agent header
+		if (browserChrome) {
 			options={enableHighAccuracy: false, maximumAge: 15000, timeout: 30000};
-		else
+		}
+		else {
 			options={maximumAge:Infinity, timeout:0};
-            navigator.geolocation.getCurrentPosition(getGeoLocationCallback, getGeoLocationErrorCallback, options);
-        }
-		function getGeoLocationCallback() {
-			console.log("Success");
 		}
-		function getGeoLocationErrorCallback() {
-			console.log("Error");
-		}
+        navigator.geolocation.getCurrentPosition(showPosition, getGeoLocationErrorCallback, options);
+    }
+	else {
+	}
+	function getGeoLocationErrorCallback() {
+		console.log("Error");
+	}
 }
 
 function showPosition(position) {
@@ -59,7 +53,7 @@ function showPosition(position) {
     });
 }
 $(document).ready(function(){
-getLocation();
+	getLocation();
 });
 </script>
     @section('append_header')@show    

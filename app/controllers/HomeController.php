@@ -2,13 +2,17 @@
 date_default_timezone_set('America/New_York');
 class HomeController extends BaseController {
     // Outputs if user is within allowed range
-    public function checkEditable($myLat, $myLng, $getLat, $getLng) {
+    public function getDistance($myLat, $myLng, $getLat, $getLng) {
         $earth_radius = 6371;
         $dLat = deg2rad($getLat - $myLat);
         $dLon = deg2rad($getLng - $myLng);
         $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($myLat)) * cos(deg2rad($getLat)) * sin($dLon/2) * sin($dLon/2);
         $c = 2 * asin(sqrt($a));
         $d = $earth_radius * $c * .62137;
+        return $d;
+    }
+    public function checkEditable($myLat, $myLng, $getLat, $getLng) {
+        $d = $this->getDistance($myLat, $myLng, $getLat, $getLng);
         if($d < 1) {
             return $editable = true;
         }
@@ -88,9 +92,16 @@ class HomeController extends BaseController {
             Session::put('lat', $_POST['lat']);
         }
     }
-    public function newDrawing()
-    {
+    public function newDrawing() {
         $data = array();
+        $drawings = Firebase::get('/draw1/drawings');
+        $data['counter'] = 0;
+        foreach($drawings as $key => $eachDrawing) {
+            $d = $this->getDistance(Session::get('lat'), Session::get('lon'), $eachDrawing['data']['lat'], $eachDrawing['data']['lon']);
+            if($d <= .5) {
+                $data['counter']++;
+            }
+        }
         $data['lon']=Session::get('lon');
         $data['lat']=Session::get('lat');
         return View::make('newDrawing', compact('data'));

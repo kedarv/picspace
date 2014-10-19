@@ -17,19 +17,20 @@ class HomeController extends BaseController {
     public function home() {
         $data = Array();
         $points = Array();
-
-        for($x=1; $x< 4; $x++)
+        $drawings = Firebase::get('/draw1/drawings');
+        foreach($drawings as $key => $eachDrawing)
         {
-            $arr = array("lon" => 10*$x,
-                "lat" => 10*$x,
-            "name" => 'name thing'.$x,
-                "link" => 'http://google.com',
-            "id" => 'id_'.$x);
+            $arr = array(
+                "lon" => $eachDrawing['data']['lon'],
+                "lat" => $eachDrawing['data']['lat'],
+                "name" => $eachDrawing['data']['name'],
+                "link" => 'http://something/'.$key,
+                "id" => $key);
             $points['drawings'][] = $arr;
         }
 
         $data['json']=json_encode($points);
-        return View::make('home', compact('data'));       
+        return View::make('home', compact('data'));;
     }
 
 	public function test()
@@ -41,17 +42,15 @@ class HomeController extends BaseController {
 
         $data = Array();
         $points = Array();
-
-
         $drawings = Firebase::get('/draw1/drawings');
         foreach($drawings as $key => $eachDrawing)
         {
             $arr = array(
                 "lon" => $eachDrawing['data']['lon'],
                 "lat" => $eachDrawing['data']['lat'],
-                "name" => $key,
-                "link" => 'http://google.com',
-            "id" => 'id');
+                "name" => $eachDrawing['data']['name'],
+                "link" => 'http://something/'.$key,
+            "id" => $key);
             $points['drawings'][] = $arr;
         }
 
@@ -69,5 +68,26 @@ class HomeController extends BaseController {
             Session::put('lon', $_POST['lon']);
             Session::put('lat', $_POST['lat']);
         }
+    }
+    public function newDrawing()
+    {
+        $data = array();
+        $data['lon']=Session::get('lon');
+        $data['lat']=Session::get('lat');
+        return View::make('newDrawing', compact('data'));
+    }
+    public function newFormAction()
+    {
+        $data=array();
+
+        $arr = array(
+            "lon" => Session::get('lon'),
+            "lat" => Session::get('lat'),
+            "name" => $_POST['drawingName'],
+            "id" => 'id');
+        $data['data']=$arr;
+
+
+        Firebase::push('/draw1/drawings/', $data);
     }
 }

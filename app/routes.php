@@ -14,6 +14,9 @@
 Route::any('/', array( 'as' => 'home', 'uses' => 'HomeController@home' ));
 Route::get('/test','HomeController@test');
 Route::get('/map','HomeController@map');
+Route::get('/new','HomeController@newDrawing');
+Route::post('/newFormAction','HomeController@newFormAction');
+
 
 Route::get('/draw/{drawing_id?}','HomeController@draw');
 

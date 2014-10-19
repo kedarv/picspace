@@ -30,8 +30,6 @@
       //console.log(locations.drawings.length);
           	myposition = new google.maps.Marker ({
           		position: new google.maps.LatLng({{Session::get('lat')}},{{Session::get('lon')}}),
-          		map: map,
-         		title: 'My Position'
         	});
         for(i = 0;i < locations.drawings.length; i++) {
         	//var 

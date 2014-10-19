@@ -123,18 +123,8 @@ ColorPicker(
 
   });
 </script>
-<<<<<<< HEAD
 <hr/>
 <div class="fb-like" data-href="http://picspace.me" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 <hr/>
-=======
 
-<div class="fb-like" data-href="{{$data['key']}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<script type="text/javascript">
-
-                </script>
-                <br>
-              
-
->>>>>>> FETCH_HEAD
 @stop

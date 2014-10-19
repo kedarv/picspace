@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/New_York');
 class HomeController extends BaseController {
     // Outputs if user is within allowed range
     public function checkEditable($myLat, $myLng, $getLat, $getLng) {
@@ -103,6 +103,7 @@ class HomeController extends BaseController {
             "lon" => Session::get('lon'),
             "lat" => Session::get('lat'),
             "name" => $_POST['drawingName'],
+            "date_created" => date("Y-m-d H:i:s"),
             "id" => 'id');
         $data['data']=$arr;
 

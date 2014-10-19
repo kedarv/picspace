@@ -87,6 +87,10 @@ ColorPicker(
       while (true) {
         //write the pixel into Firebase, or if we are drawing white, remove the pixel
         pixelDataRef.child(x0 + ":" + y0).set(currentColor);
+
+        myDate = new Date();
+
+        otherdata.child('date_updated').set(+ myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds()   );
         console.log(currentColor);
 
         if (x0 == x1 && y0 == y1) break;

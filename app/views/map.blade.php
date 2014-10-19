@@ -20,7 +20,7 @@
         for(i = 0;i < locations.drawings.length; i++)
         {
           marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations.drawings[i].lon,locations.drawings[i].lat),
+          position: new google.maps.LatLng(locations.drawings[i].lat,locations.drawings[i].lon),
           map: map,
           title: 'Hello World!'
         });

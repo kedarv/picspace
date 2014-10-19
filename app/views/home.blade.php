@@ -3,6 +3,9 @@
 @section('js')
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
+    $(document).ready(function() {
+    	$(".jumbotron").delay(5000).fadeOut(2000);
+    });
       var json = '{{$data['json']}}'
          //console.log(json);
       var locations = JSON.parse(json);

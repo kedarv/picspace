@@ -25,16 +25,21 @@ function getLocation() {/*
     } else {
     console.log("failed");
     } */
-        var options = null;
-        if (navigator.geolocation) {
-            if (browserChrome) //set this var looking for Chrome un user-agent header
-                options={enableHighAccuracy: false, maximumAge: 15000, timeout: 30000};
-            else
-                options={maximumAge:Infinity, timeout:0};
-            navigator.geolocation.getCurrentPosition(getGeoLocationCallback,
-                    getGeoLocationErrorCallback,
-                   options);
+	var options = null;
+	var browserChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    if (navigator.geolocation) {
+		if (browserChrome) //set this var looking for Chrome un user-agent header
+			options={enableHighAccuracy: false, maximumAge: 15000, timeout: 30000};
+		else
+			options={maximumAge:Infinity, timeout:0};
+            navigator.geolocation.getCurrentPosition(getGeoLocationCallback, getGeoLocationErrorCallback, options);
         }
+		function getGeoLocationCallback() {
+			console.log("Success");
+		}
+		function getGeoLocationErrorCallback() {
+			console.log("Error");
+		}
 }
 
 function showPosition(position) {

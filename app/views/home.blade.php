@@ -15,7 +15,7 @@
 			zoom: 15,
 			center: myLatlng,
             disableDefaultUI: false,
-        	scrollwheel: false,
+        	scrollwheel: true,
    			navigationControl: false,
     		mapTypeControl: false,
     		scaleControl: true,

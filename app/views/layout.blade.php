@@ -19,12 +19,22 @@
     @show
 <script>
 
-function getLocation() {
+function getLocation() {/* 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
     console.log("failed");
-    }
+    } */
+        var options = null;
+        if (navigator.geolocation) {
+            if (browserChrome) //set this var looking for Chrome un user-agent header
+                options={enableHighAccuracy: false, maximumAge: 15000, timeout: 30000};
+            else
+                options={maximumAge:Infinity, timeout:0};
+            navigator.geolocation.getCurrentPosition(getGeoLocationCallback,
+                    getGeoLocationErrorCallback,
+                   options);
+        }
 }
 
 function showPosition(position) {
@@ -33,20 +43,15 @@ function showPosition(position) {
     var location = {};
     location['lat']=position.coords.latitude;
     location['lon']=position.coords.longitude;
-
-
     $.ajax({
-                type: "POST",
-                url: "{{action('HomeController@locationPost')}}",
-                data: location,
-    			success:function (data) {
-    				console.log(data);
-    			},
-                dataType: 'json'
-            });
-
-
-
+		type: "POST",
+        url: "{{action('HomeController@locationPost')}}",
+        data: location,
+    	success:function (data) {
+			console.log(data);
+    	},
+        dataType: 'json'
+    });
 }
 $(document).ready(function(){
 getLocation();

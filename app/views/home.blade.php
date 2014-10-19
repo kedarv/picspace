@@ -12,8 +12,8 @@
       function initialize() {
         var myLatlng = new google.maps.LatLng({{Session::get('lat')}},{{Session::get('lon')}});
         var mapOptions = {
-          zoom: 15,
-          center: myLatlng,
+			zoom: 15,
+			center: myLatlng,
             disableDefaultUI: false,
         	scrollwheel: false,
    			navigationControl: false,
@@ -52,11 +52,11 @@
       	var circle = new google.maps.Circle({
   			map: map,
   			radius: 1609,    // 10 miles in metres
-		strokeColor: '#0033CC',
-      strokeOpacity: 0.5,
-      strokeWeight: 1,
-      fillColor: '#0066FF',
-      fillOpacity: 0.1,
+			strokeColor: '#0033CC',
+			strokeOpacity: 0.5,
+			strokeWeight: 1,
+			fillColor: '#0066FF',
+			fillOpacity: 0.1,
 		});
 circle.bindTo('center', myposition, 'position');
     }

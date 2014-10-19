@@ -26,6 +26,7 @@
         var infowindow = new google.maps.InfoWindow();
         var marker;
         var i = 0; 
+        var name;
       //console.log(locations.drawings.length);
           	myposition = new google.maps.Marker ({
           		position: new google.maps.LatLng({{Session::get('lat')}},{{Session::get('lon')}}),
@@ -33,7 +34,7 @@
          		title: 'My Position'
         	});
         for(i = 0;i < locations.drawings.length; i++) {
-        	var name = locations.drawings[i].name;
+        	//var 
           	marker = new google.maps.Marker ({
           		position: new google.maps.LatLng(locations.drawings[i].lat,locations.drawings[i].lon),
           		map: map,
@@ -44,6 +45,7 @@
         //console.log(locations.drawings[i].name);
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
+            name = locations.drawings[i].name;
             infowindow.setContent(name.link(locations.drawings[i].link));
             infowindow.open(map, marker);
           }

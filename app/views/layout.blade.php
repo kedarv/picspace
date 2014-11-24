@@ -30,7 +30,17 @@ function getLocation() {
 	else {
 	}
 	function getGeoLocationErrorCallback() {
+        var ip = "{{$_SERVER['REMOTE_ADDR']}}";
 		console.log("Error");
+        $.ajax({
+            type: "POST",
+            url: "{{action('HomeController@locationFallBack')}}",
+            data: ip,
+            success:function (data) {
+                console.log(data);
+            },
+            dataType: 'json'
+        });
 	}
 }
 

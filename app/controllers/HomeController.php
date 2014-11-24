@@ -92,6 +92,11 @@ class HomeController extends BaseController {
             Session::put('lat', $_POST['lat']);
         }
     }
+    public function locationFallBack() {
+        if(Request::ajax()) {
+            
+        }
+    }
     public function newDrawing() {
         $data = array();
         $drawings = Firebase::get('/draw1/drawings');

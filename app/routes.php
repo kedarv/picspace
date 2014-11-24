@@ -21,3 +21,4 @@ Route::post('/newFormAction','HomeController@newFormAction');
 Route::get('/draw/{drawing_id?}','HomeController@draw');
 
 Route::post('/locationPost', 'HomeController@locationPost');
+Route::post('/locationFallBack', 'HomeController@locationFallBack')
